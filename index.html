@@ -276,55 +276,7 @@ function getTrackId(response)
 function getTagsAndImages () 
 {
 	words = searchQuery.value//.split(" ")
-	//playlist_name = 'Musixmatch - ' + words.capitalizeFirstLetter() //+ words[1]
-	// if (searchType.value == 'words')
-	// {
-	// 	var seed_query = mxmAPI_base + 'track.search?apikey=' + apiKey + '&q_lyrics=' + searchQuery.value + '&g_commontrack=1'+'&f_has_lyrics=1&page_size=100' + '&format=jsonp&callback=?'
-	// 	var seed_queryURI = encodeURI(seed_query)
 
-	// 	document.getElementById("SpotifyWidget").style.visibility = "hidden"
-	// 	document.getElementById("SpotifySave").style.display = "none"
-	// 	$("#status").text("Searching Musixmatch db for songs with those words")
-								
-	// 	makePlaylist(seed_queryURI, true)
-	// 	.then(function(track_ids){
-	// 		console.log(track_ids)
-				
-	// 		localStorage.setItem('track_ids', JSON.stringify(track_ids));
-	// 		localStorage.setItem('playlist-name', playlist_name);
-	// 		//console.log('123')
-	// 		//localStorage.setItem('createplaylist-artist', curArtist['@name']);
-	// 		if(track_ids.length > 0)
-	// 		{
-	// 			// <iframe src="https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe" frameborder="0" allowtransparency="true"></iframe>
-									
-	// 			var src = "https://embed.spotify.com/?uri=spotify:trackset:"+playlist_name+':'+ track_ids.toString()
-	// 			//console.log(src)
-	// 			$("#status").text("Done!")
-	// 			document.getElementById("SpotifyWidget").style.visibility = "visible"
-	// 			$('#SpotifyWidget').empty()
-	// 			document.getElementById("SpotifyWidget").innerHTML += '<iframe id = "SpotifyWidgetFrame" frameborder="0" allowtransparency="true" width="373" height="453" style = "display:inline"></iframe>'
-	// 			document.getElementById("SpotifyWidgetFrame").src = src
-	// 			//console.log(document.getElementById("SpotifyWidget").innerHTML)
-				
-	// 			have_valid_playlist = true
-				
-	// 			return Promise.resolve()
-	// 		}}, function(error){
-	// 			console.log(error)
-	// 			$("#status").text("No songs found with these search terms. Try again please.")
-	// 			return Promise.reject()
-	// 		}).then(function(){
-	// 			//console.log('love')
-	// 			//document.getElementById("SpotifySave").disabled = false
-	// 			document.getElementById("SpotifySave").style.display = "inline-block"
-
-	// 		})
-	// 								//console.log(final_playlist_ids)
-	// }
-
-	// if (searchType.value == 'track')
-	// {
 	var seed_query = mxmAPI_base + 'matcher.track.get?apikey=' + apiKey + '&q_track=' + searchQuery.value + '&f_has_lyrics=1' + '&format=jsonp&callback=?'
 	var seed_queryURI = encodeURI(seed_query)
 	//console.log(seed_queryURI)
@@ -377,6 +329,7 @@ function getTagsAndImages ()
 		}, function(error){
 			console.log(error)
 			$("#status").text("No tracks found with this query. Try again please.")
+			document.getElementById("progress").style.display = "none"
 			return Promise.reject()
 
 		})
@@ -385,21 +338,6 @@ function getTagsAndImages ()
 				
 			
 
-	// }
-
-	// if (searchType.value == 'mxmId')
-	// {
-	// 	var seed_query = mxmAPI_base + 'track.get?apikey=' + apiKey + '&track_id=' + searchQuery.value + '&format=jsonp&callback=?' 
-	// 	var seed_queryURI = encodeURI(seed_query)
-	// 	console.log(seed_queryURI)
-	// 	$.getJSON(seed_queryURI, function(result){
-	// 	//console.log(123)
-	// 	var jsonString = JSON.stringify(result);
-	// 	var response = JSON.parse(jsonString);
-	// 	console.log(response); 
-	// 	})
-	// }
-	// return false
 }
 
 $("#mxmTrackSearch").keyup(function(event) {
@@ -408,60 +346,6 @@ $("#mxmTrackSearch").keyup(function(event) {
     }
 });
 
-// $('#searchType').change(function() {
-//   console.log('The option with value ' + $(this).val() + ' and text ' + $(this).text() + ' was selected.');
-//   if($(this).val() == 'track')
-//   {
-//   	document.getElementById("playlistTypeContainer").style.display = "inline-block"
-//   	document.getElementById("mxmTrackSearch").placeholder = "Insert Track-Artist"
-//   	// console.log(min_term_freq.value)
-//   	// console.log(covers.value)
-//   	min_term_freq.value = 2 + Number(covers.value)
-//   	max_query_terms.value = 20 - Number(covers.value)
-//   	// console.log(min_term_freq.value)
-
-//   }
-//   if($(this).val() == 'words')
-//   {
-//   	document.getElementById("playlistTypeContainer").style.display = "none"
-//   	document.getElementById("mxmTrackSearch").placeholder = "Insert word/s"
-//   	min_term_freq.value = 8 
-//   	max_query_terms.value = 8
-//   	// console.log(min_term_freq.value)
-//   }
-// });
-
-// $('#playlistType').change(function(){
-// 	console.log('The option with value ' + $(this).val() + ' and text ' + $(this).text() + ' was selected.');
-// 	if ($(this).val() == 'covers')
-// 		{
-// 			//console.log(1)
-// 			min_term_freq.value = 2 
-// 			max_query_terms.value = 20
-// 		}
-
-// 	if ($(this).val() == 'uniques')
-// 		{
-// 			//console.log(2)
-// 			min_term_freq.value = 8 
-// 			max_query_terms.value = 8
-// 		}	
-
-// })
-
-// searchForm.onsubmit = function(e){
-// 	searchAndMakePlaylist()
-// }
-
-// $('#cover_songs').change(function(){
-// 	// console.log($(this).val())
-// 	// console.log(min_term_freq.value)
-// 	// console.log(max_query_terms.value)
-// 	min_term_freq.value = 2 + Number($(this).val()) //covers.value
-// 	max_query_terms.value = 20 - Number($(this).val()) //covers.value	
-// 	// console.log(min_term_freq.value)
-// 	// console.log(max_query_terms.value)
-// })
 
 GetImages.onclick = function(e){
 	getTagsAndImages()
