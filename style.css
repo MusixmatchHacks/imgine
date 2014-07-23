@@ -4,7 +4,7 @@
 }
 
 body {
-  /*background-color: rgba(0,0,0,.5);*/
+  /* background-color: rgba(0,0,0,.5); */
   background-color: #8A8A8A;
   text-align: center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -15,15 +15,19 @@ body {
 }
 
 .container {
-  width: 900px;
+  
+  width: 100%;
   /*width: 100%;*/
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
+  
 }
 
 header {
-  background-color: transparent;
-  padding: 30px 0 25px 0;
+/*   background-color: transparent; */
+  background-color: rgba(0,0,0,.5);
+  
+padding: 11px 0 0px 0;
 }
 
 header a {
@@ -37,8 +41,8 @@ header a {
 
 header a:hover {
   /*background-color: rgba(0,0,0,.5);*/
-  background-color: #8A8A8A;
-  color: #777;
+/*   background-color: #8A8A8A; */
+  color: #CCC;
 }
 
 h1 {
@@ -91,6 +95,7 @@ select#searchType, #playlistType {
 
 #status{
   color: #fff;
+/*   background-color: rgba(0,0,0,.5); */
 }
 
 #SpotifyWidget {
