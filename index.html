@@ -36,8 +36,8 @@
 	</form>
 
  -->
- <div id="imageContainer">	
- 	<input type="search" id="mxmTrackSearch" placeholder="Insert Track-Artist" />
+ 	<!-- <div id="imageContainer">	 -->
+ 		<input type="search" id="mxmTrackSearch" placeholder="Insert Track-Artist" />
 
 <!-- 	<select id = "searchType">
   		<option value="words" >Search with 'Words'</option>
@@ -49,9 +49,9 @@
  		More covers songs<input type="range"  id="cover_songs" min="0" max="15" />Less cover songs
 	</div> -->
 
-	<div id = "buttonContainer" style = "display:none">
- 		<input type="button" value="Get Images" id = "getImages">
- 	</div>
+		<div id = "buttonContainer" style = "display:none">
+ 			<input type="button" value="Get Images" id = "getImages">
+ 		</div>
  	
 <!--  	<div style = "display:none">
 			Similarity to query: less<input type="range"  id="max_query_terms" name="max_query_terms" min="1" max="30" />more
@@ -59,16 +59,16 @@
 	<div style = "display:none">
 			Number of tracks to : more<input type="range"  id="min_term_freq" name="min_term_freq" min="1" max="30" />less
 	</div> -->
-	<div id = "status" style = "display:inline"></div>
-	<div id = "progress" style = "display:none" ><img src = 'ajax-loader.gif'> </div>
-	<!-- <progress id = "ProgressBar" value="0" max="100" style = ""></progress> -->
+		<div id = "status" style = "display:inline"></div>
+		<div id = "progress" style = "display:none" ><img src = 'ajax-loader.gif'> </div>
+		<!-- <progress id = "ProgressBar" value="0" max="100" style = ""></progress> -->
 <!-- 	<div> <input type="button" value="Save This Playlist To Spotify" id = "SpotifySave" style = "display:none"> </div> -->
-	<div id = "SpotifyWidget" > </div>
+		<div id = "SpotifyWidget" > </div>
 	<!-- <div id = "ImageDisplay" style = "display:none" ><img id = "Image"> </div> -->
 <!-- <footer>
 	Uses <a href="https://developer.musixmatch.com/">Musixmatch API</a>, <a href="https://developer.spotify.com/web-api/">Spotify web API</a> and <a href="https://developer.spotify.com/technologies/widgets/">Spotify widgets</a>. Contact the author at <a href="https://twitter.com/neotheoen">@neotheoen</a>.
 </footer> -->
-</div>
+	<!-- </div> -->
 </body>
 <!-- <svg class="chart"></svg> -->
 <!-- <script src="http://jpillora.com/xdomain/dist/0.6/xdomain.min.js" master="localhost:8888"></script> -->
@@ -282,7 +282,8 @@ function getTagsAndImages ()
 	var seed_query = mxmAPI_base + 'matcher.track.get?apikey=' + apiKey + '&q_track=' + searchQuery.value + '&f_has_lyrics=1' + '&format=jsonp&callback=?'
 	var seed_queryURI = encodeURI(seed_query)
 	//console.log(seed_queryURI)
-	$('#imageContainer').backstretch("destroy",false)
+	// $('#imageContainer').backstretch("destroy",false)
+	$.backstretch("destroy",false)
 	$('#SpotifyWidget').empty()
 	//document.getElementById("SpotifyWidget").style.visibility = "hidden"
 	//document.getElementById("SpotifySave").style.display = "none"
@@ -326,7 +327,8 @@ function getTagsAndImages ()
 				})
 				console.log(photos)
 				//document.getElementById("ImageDisplay").style.display = "inline-block"
-				$('#imageContainer').backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
+				// $('#imageContainer').backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
+				$.backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
 			})
 
 		}, function(error){
@@ -334,7 +336,8 @@ function getTagsAndImages ()
 			$("#status").text("No tracks found with this query. Try again please.")
 			document.getElementById("progress").style.display = "none"
 			photos = ["http://i.imgur.com/83ghVct.jpg"]
-			$('#imageContainer').backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
+			// $('#imageContainer').backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
+			$.backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
 			return Promise.reject()
 
 		})
