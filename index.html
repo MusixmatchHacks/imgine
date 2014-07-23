@@ -303,31 +303,27 @@ function getTagsAndImages ()
 				$("#status").text("Done")
 				console.log('2')
 				document.getElementById("progress").style.display = "none"
-				var src = "https://embed.spotify.com/?uri=spotify:track:"+ track_ids[1].toString()
+				if(track_ids[1] != "")
+				{
+					var src = "https://embed.spotify.com/?uri=spotify:track:"+ track_ids[1].toString()
+					document.getElementById("SpotifyWidget").style.visibility = "visible"
+					document.getElementById("SpotifyWidget").innerHTML += '<iframe id = "SpotifyWidgetFrame" frameborder="0" allowtransparency="true" width="300" height="80" style = "display:inline"></iframe>'
+					document.getElementById("SpotifyWidgetFrame").src = src
+					console.log(document.getElementById("SpotifyWidgetFrame"))
+				}
 				//console.log(src)
-				$("#status").text("Done!")
-				document.getElementById("SpotifyWidget").style.visibility = "visible"
-				// $('#SpotifyWidget').empty()
-				document.getElementById("SpotifyWidget").innerHTML += '<iframe id = "SpotifyWidgetFrame" frameborder="0" allowtransparency="true" width="300" height="80" style = "display:inline"></iframe>'
-				document.getElementById("SpotifyWidgetFrame").src = src
-				console.log(document.getElementById("SpotifyWidgetFrame"))
+				else
+				{
+					$("#status").text("Spotify track not found")
+				}
 				photos = []
 				response.tags.forEach(function(data){
 					photo_urls = data.photo_urls
-
 					photo_urls.forEach(function(photo){
 						photos.push(photo)
-						// console.log(photo)
-					// 	setTimeout(function(){
-					// 		document.getElementById("Image").src = photo
-					// 		document.getElementById("ImageDisplay").style.display = "inline-block"
-					// 		$("#status").text("Image about: " + data.tag_word)
-					// 	},2000)
-								
-					// })
 					})
 				})
-				console.log(photos)
+				// console.log(photos)
 				//document.getElementById("ImageDisplay").style.display = "inline-block"
 				// $('#imageContainer').backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
 				$.backstretch(photos, {duration: 8000, fade: 1000, centeredX: true, centeredY: true});
