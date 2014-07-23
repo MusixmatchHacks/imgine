@@ -333,10 +333,12 @@ function getTagsAndImages ()
 			console.log(error)
 			$("#status").text("No tracks found with this query. Try again please.")
 			document.getElementById("progress").style.display = "none"
+			photos = ["http://i.imgur.com/83ghVct.jpg"]
+			$('#imageContainer').backstretch(photos, {duration: 5000, fade: 1000, centeredX: true, centeredY: true});
 			return Promise.reject()
 
 		})
-		console.log
+		//console.log
 	})
 				
 			
