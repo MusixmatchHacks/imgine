@@ -297,7 +297,7 @@ function getTagsAndImages ()
 			console.log(track_ids)
 			url = tagAPI_base + '/tags.images?trackID=' + track_ids[0] + '&format=jsonp&callback=?'
 			url = encodeURI(url)
-			$("#status").text("Searching for images")
+			$("#status").text("Searching for images (please try again if stuck here)")
 			console.log(url)
 			return getJSON(url).then(function(response){
 				$("#status").text("Done")
