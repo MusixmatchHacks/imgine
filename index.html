@@ -280,6 +280,7 @@ function getTagsAndImages ()
 	var seed_query = mxmAPI_base + 'matcher.track.get?apikey=' + apiKey + '&q_track=' + searchQuery.value + '&f_has_lyrics=1' + '&format=jsonp&callback=?'
 	var seed_queryURI = encodeURI(seed_query)
 	//console.log(seed_queryURI)
+	$.backstretch("destroy",false)
 
 	//document.getElementById("SpotifyWidget").style.visibility = "hidden"
 	//document.getElementById("SpotifySave").style.display = "none"
@@ -304,7 +305,7 @@ function getTagsAndImages ()
 				$('#SpotifyWidget').empty()
 				document.getElementById("SpotifyWidget").innerHTML += '<iframe id = "SpotifyWidgetFrame" frameborder="0" allowtransparency="true" width="300" height="80" style = "display:inline"></iframe>'
 				document.getElementById("SpotifyWidgetFrame").src = src
-
+				console.log(document.getElementById("SpotifyWidgetFrame").innerHTML)
 				photos = []
 				response.tags.forEach(function(data){
 					photo_urls = data.photo_urls
