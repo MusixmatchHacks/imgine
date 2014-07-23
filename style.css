@@ -9,7 +9,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
+  color: #FFF;
   /*height: 100%;*/
 }
 
@@ -30,7 +30,7 @@ header a {
   float: right;
   text-decoration: none;
   font-weight: bold;
-  color: #999;
+  color: #FFF;
   /*border-bottom: 1px solid #f0f0f0;*/
 }
 
@@ -43,7 +43,7 @@ h1 {
   text-transform: uppercase;
   font-weight: 200;
   letter-spacing: 1px;
-  color: #000;
+  color: #FFF;
   margin: 20px 0 10px 0;
   font-size: 40px;
 }
@@ -85,6 +85,10 @@ select#searchType, #playlistType {
   margin-right: 20px;
   text-align: center;
   /*border-radius: 30px;*/
+}
+
+#status{
+  color: #fff;
 }
 
 #SpotifyWidget {
